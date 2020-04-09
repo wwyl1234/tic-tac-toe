@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// Square is a function component. Notice it is a function instead of a class.
 function Square(props) {
     return (
         <button className='square' onClick={props.onClick}>
@@ -128,6 +129,7 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
+// Determines who is the winner
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
@@ -145,5 +147,11 @@ function calculateWinner(squares) {
           return squares[a];
         }
       }
+      // Need to handle case that there is no winner when board is filled.
+      const result = squares.filter(square => square != null);
+      if (result.length === 9){
+        return "No Winner";
+      }
+      
       return null;
 }
